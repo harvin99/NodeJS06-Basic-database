@@ -19,7 +19,17 @@ app.get("/", (req, res) => {
   res.render('index')
 })
 app.get("/todos", (req, res) => {
-  res.render('todo', {list: toDoList})
+  const q = req.query.q;
+  console.log(q);
+  console.log(toDoList);
+  if(!q)
+    res.render('todo', {list: toDoList});
+  else {
+    const matchedTasks = toDoList.filter(task => task.toLowerCase().indexOf(q.toLowerCase()) !== 1);
+    res.render('todo', {list: matchedTasks});
+  } 
+    
+  
 })
 app.post("/todos", (req, res) => {
   toDoList.push(req.body.task);
