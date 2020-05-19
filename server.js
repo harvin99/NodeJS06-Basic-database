@@ -12,14 +12,16 @@ app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'pug');
 app.set('views', './views');
 //Router
-const list = []
+const toDoList = []
 app.get('/', (req, res) => {
-  const task = req.body.todo;
-  console.log(task);
-  list.push(task);
-  res.render('index', {
-    list: list
-  })
+  res.render('index')
+})
+app.get("/todo", (req, res) => {
+  res.render('todo', {list: toDoList})
+})
+app.post("/todo", (req, res) => {
+  toDoList.push(req.body.task)
+  res.render('todo', {list: toDoList})
 })
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
