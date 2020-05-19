@@ -14,7 +14,7 @@ app.set('views', './views');
 app.use(express.urlencoded({extended: true }));
 
 //Router
-const toDoList = [];
+const toDoList = ['Nấu ăn', 'Nấu canh', 'Chơi game'];
 app.get("/", (req, res) => {
   res.render('index')
 })
@@ -22,13 +22,11 @@ app.get("/todos", (req, res) => {
   const q = req.query.q;
   console.log(q);
   console.log(toDoList);
-  if(!q)
-    res.render('todo', {list: toDoList});
-  else {
-    const matchedTasks = toDoList.filter(task => task.toLowerCase().indexOf(q.toLowerCase()) !== 1);
+  
+    var matchedTasks = toDoList.filter(function(task){
+      return task.toLowerCase().indexOf(q.toLowerCase()) !== 1;
+    });
     res.render('todo', {list: matchedTasks});
-  } 
-    
   
 })
 app.post("/todos", (req, res) => {
