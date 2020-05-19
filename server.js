@@ -20,11 +20,9 @@ app.get("/", (req, res) => {
 })
 app.get("/todos", (req, res) => {
   const q = req.query.q;
-  console.log(q);
-  console.log(toDoList);
   
     var matchedTasks = toDoList.filter(function(task){
-      return task.toLowerCase().indexOf(q.toLowerCase()) !== 1;
+      return task.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     });
     res.render('todo', {list: matchedTasks});
   
