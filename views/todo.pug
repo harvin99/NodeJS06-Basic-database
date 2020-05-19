@@ -4,8 +4,8 @@ block content
   .container
     form(action='/todo', method='POST')
     .form-group
-      label(for='todo') Enter your task:
-      input.form-control(type='text', name='todo')
+      label(for='task') Enter your task:
+      input.form-control(type='text', name='task')
     button.btn.btn-primary(type='submit') Submit
     ul.mt-4
       each task in list
