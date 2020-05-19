@@ -11,7 +11,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views');
 //For body parser
-app.use(express.urlencoded({extended: false }));
+app.use(express.urlencoded({extended: true }));
 
 //Router
 const toDoList = [];
