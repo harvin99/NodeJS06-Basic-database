@@ -5,13 +5,21 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+//For body parser
+app.use(express.urlencoded({extended: false}));
 
 //Template view engine
 app.set('view engine', 'pug');
 app.set('views', './views');
 //Router
+const list = []
 app.get('/', (req, res) => {
-  res.render('index')
+  const task = req.body.todo;
+  console.log(task);
+  list.push(task);
+  res.render('index', {
+    list: list
+  })
 })
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

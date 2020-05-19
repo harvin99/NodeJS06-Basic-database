@@ -1,4 +1,12 @@
 extends ./layout/common.pug
 block content
-  h1 ToDoList
-  div.container
+  h1.text-center ToDoList
+  .container
+    form(action='')
+    .form-group
+      label(for='todo') Enter your task:
+      input.form-control(type='text', name='todo')
+    button.btn.btn-primary(type='submit') Submit
+    ul.mt-4
+      each task in list
+        li= task
