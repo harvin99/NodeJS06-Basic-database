@@ -1,11 +1,21 @@
 extends ./layout/common.pug
 block content
   h1.text-center ToDoList
+  form(action='/create', method='POST')
+    .container
+      .form-group
+        label(for='todo') Create:
+          input.form-control(type='text', name='todo')
+      button.btn.btn-primary(type='submit') Create
+      
   form(action='/todos', method='GET')
     .container
       .form-group
         label(for='name') Search:
-        input.form-control(type='text', name='name')
+        if lastValue
+          input.form-control(type='text', name='name', value= lastValue)
+        else
+          input.form-control(type='text', name='name')
       button.btn.btn-primary(type='submit') Search
 
   ul.mt-4
