@@ -19,13 +19,17 @@ app.get("/", (req, res) => {
   res.render('index')
 })
 app.get("/todos", (req, res) => {
-  //const q = req.query.q;
-   // var matchedTasks = toDoList.filter(function(task){
-    //  return task.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-   // });
-    //res.render('todo', {list: matchedTasks});
-  console.log(req.body.name);
-    res.render('todo',{list: []});
+  const q = req.query.name;
+  if(q){
+    const matchedTasks = toDoList.filter(
+      task => task.toLowerCase().indexOf(q.toLowerCase()) !== -1
+    )
+    res.render('todo', {list: matchedTasks, lastValue: q})
+  }
+  else
+    {
+      res.render('todo', {list: toDoList});
+    }
 })
 
 // listen for requests :)
