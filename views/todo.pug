@@ -1,10 +1,10 @@
 extends ./layout/common.pug
 block content
   h1.text-center ToDoList
-  form(action='/todos', method='POST')
+  form(action='/todos', method='GET')
     .container
       .form-group
-        label(for='task') Search:
+        label(for='name') Search:
         input.form-control(type='text', name='name')
       button.btn.btn-primary(type='submit') Search
 

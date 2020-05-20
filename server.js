@@ -19,19 +19,15 @@ app.get("/", (req, res) => {
   res.render('index')
 })
 app.get("/todos", (req, res) => {
-  const q = req.query.q;
-    var matchedTasks = toDoList.filter(function(task){
-      return task.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-    });
-    res.render('todo', {list: matchedTasks});
-  
+  //const q = req.query.q;
+   // var matchedTasks = toDoList.filter(function(task){
+    //  return task.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+   // });
+    //res.render('todo', {list: matchedTasks});
+  console.log(req.body.name);
+    res.render('todo',{list: []});
 })
-app.post("/todos/search", (req, res) => {
-  const key = req.body.name;
-  req.query.q = key;
-  console.log(req.query.q);
-  res.render('todo')
-})
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
