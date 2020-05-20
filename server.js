@@ -10,7 +10,7 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", "./views");
 //For body parser
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 //Router
 const toDoList = ["Nấu ăn", "Nấu canh", "Chơi game"];
@@ -30,6 +30,7 @@ app.get("/todos", (req, res) => {
 });
 app.post('/todos/create', (req, res) => {
   const task = req.body.todo;
+  console.log(task);
   toDoList.push(task);
   res.redirect('todos')
 })

@@ -1,23 +1,10 @@
 extends ./layout/common.pug
 block content
   h1.text-center ToDoList
-  form(action='/create', method='POST')
-    .container
-      .form-group
-        label(for='todo') Create:
-          input.form-control(type='text', name='todo')
-      button.btn.btn-primary(type='submit') Create
-      
+  form(action='/todos/create', method='POST')
+    include _form_todo_field.pug
   form(action='/todos', method='GET')
-    .container
-      .form-group
-        label(for='name') Search:
-        if lastValue
-          input.form-control(type='text', name='name', value= lastValue)
-        else
-          input.form-control(type='text', name='name')
-      button.btn.btn-primary(type='submit') Search
-
+    include _form_name_field.pug
   ul.mt-4
     each task in list
       li= task

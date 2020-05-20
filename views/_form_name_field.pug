@@ -1,0 +1,8 @@
+.container
+      .form-group
+        label(for='name') Search:
+        if lastValue
+          input.form-control(type='text', name='name', value= lastValue)
+        else
+          input.form-control(type='text', name='name')
+      button.btn.btn-primary(type='submit') Search
