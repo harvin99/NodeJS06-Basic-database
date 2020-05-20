@@ -1,8 +1,7 @@
 extends ./layout/common.pug
 block content
   h1.text-center ToDoList
-  form(action='/todos/create', method='POST')
-    include _form_todo_field.pug
+  a.pl-3(href='/todos/create') New task
   form(action='/todos', method='GET')
     include _form_name_field.pug
   ul.mt-4

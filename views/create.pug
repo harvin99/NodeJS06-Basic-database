@@ -1,0 +1,5 @@
+extend ./layout/common.pug
+block content
+  h1.text-center Create new task
+  form(action='/todos/create', method='POST')
+    include _form_todo_field.pug

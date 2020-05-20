@@ -28,11 +28,14 @@ app.get("/todos", (req, res) => {
     res.render("todo", { list: toDoList });
   }
 });
+app.get('/todos/create', (req, res) => {
+  res.render('create')
+})
 app.post('/todos/create', (req, res) => {
   const task = req.body.todo;
   console.log(task);
   toDoList.push(task);
-  res.redirect('todos')
+  res.redirect('/todos')
 })
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
