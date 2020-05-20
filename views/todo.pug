@@ -4,9 +4,9 @@ block content
   form(action='/todos', method='POST')
     .container
       .form-group
-        label(for='task') Enter your task:
-        input.form-control(type='text', name='task')
-      button.btn.btn-primary(type='submit') Submit
+        label(for='task') Search:
+        input.form-control(type='text', name='name')
+      button.btn.btn-primary(type='submit') Search
 
   ul.mt-4
     each task in list

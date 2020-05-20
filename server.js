@@ -20,16 +20,17 @@ app.get("/", (req, res) => {
 })
 app.get("/todos", (req, res) => {
   const q = req.query.q;
-  
     var matchedTasks = toDoList.filter(function(task){
       return task.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     });
     res.render('todo', {list: matchedTasks});
   
 })
-app.post("/todos", (req, res) => {
-  toDoList.push(req.body.task);
-  res.render('todo', {list: toDoList})
+app.post("/todos/search", (req, res) => {
+  const key = req.body.name;
+  req.query.q = key;
+  console.log(req.query.q);
+  res.render('todo')
 })
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
